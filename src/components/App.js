@@ -1,50 +1,26 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component} from "react";
+import Incoming from "./Incoming";
+import Outgoing from "./Outgoing";
 
-const applyFilter = searchTerm => article =>
-  article.title.toLowerCase().includes(searchTerm.toLowerCase());
+const canUseDOM = !!(
+    (typeof window !== 'undefined' &&
+    window.document && window.document.createElement)
+);
 
-const App = ({ articles, searchTerm, onSearch }) =>
-  <div>
-    <Search value={searchTerm} onSearch={onSearch}>
-      <p>Search</p>
-    </Search>
+if (canUseDOM) {
+  require('./App.css');
+}
 
-    <Articles articles={articles.filter(applyFilter(searchTerm))} />
+class App extends Component {
+  render()
+ {
+  return(
+    <div className="rest">
+      <p>What is the capital of india?</p>
+    <Incoming defaultInput = {""} />
+    <Outgoing />
+    </div>
+  )
+ }}
 
-    <p>Take the journey to learn Redux in <a href={'https://roadtoreact.com/'}>Taming the State in React</a></p>
-  </div>
-
-const Search = ({ value, onSearch, children }) =>
-  <div>
-    {children} <input
-      value={value}
-      onChange={event => onSearch(event.target.value)}
-      type="text"
-    />
-  </div>
-
-const Articles = ({ articles }) =>
-  <ul>
-    {articles.map(article =>
-      <li key={article.id}>
-        <Article article={article} />
-      </li>
-    )}
-  </ul>
-
-const Article = ({ article }) =>
-  <a href={article.url}>{article.title}</a>
-
-// connecting view layer to state layer with react-redux
-
-const mapStateToProps = state => ({
-  articles: state.articlesState.articles,
-  searchTerm: state.searchState.searchTerm,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onSearch: searchTerm => dispatch({ type: 'SEARCH_SET', searchTerm }),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
