@@ -34,12 +34,12 @@ class Incoming extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
-                    <label>
-                        Submit your Answer:
+                    <label className='label'>
+                        Submit your Answer: 
                     </label>
                     <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
-                    <input type="submit" value="Submit" />
-                    <input type="reset" value="Reset" />
+                    <input className='submitBtn' type="submit" value="Submit" />
+                    <input className='resetBtn' type="reset" value="Reset" />
                     </form>
             </div>
         )

@@ -15,9 +15,9 @@ class App extends Component {
   render()
  {
   return(
-    <div className="rest">
-      <p>What is the capital of india?</p>
-    <Incoming defaultInput = {""} />
+    <div className="test" id="">
+      <p>What is the capital of Ontario?</p>
+    <Incoming defaultInput = {''} />
     <Outgoing />
     </div>
   )

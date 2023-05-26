@@ -2,13 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 
 class OutGoing extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            'answer': false
+        };
+
+        this.submittedAnswer = this.submittedAnswer.bind(this);
+    }
+
     submittedAnswer = (str) => {
         str = str.toLowerCase();
         str = str.replace(/\s/g, '');
-        if (str === "delhi") {
-            return "Correct Answer"
+        if (str === "toronto") {
+            this.state.answer = true;
+           
         } else {
-            return "Wrong Answer"
+            this.state.answer = false;
+            
         }
     }
 
@@ -16,7 +27,11 @@ class OutGoing extends React.Component {
         return (
             <div>
                 <b>The Answer is</b>
-                <p>{this.submittedAnswer(this.props.submittedValue)}</p>
+                {this.submittedAnswer(this.props.submittedValue)}
+                <p className={(this.state.answer ? 'correctAns' : 'wrongAns')}>
+                    {this.state.answer ? 'CorrectAnswer' : 'WrongAnswer'}
+                </p>
+                
             </div>
         );
     }
