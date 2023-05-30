@@ -1,57 +1,41 @@
-import React from "react";  
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { updateScore } from "../Redux/action";
-import questions from './questions.json';
 
+const OutGoing = (props) => {
+  useEffect(() => {
+    submittedAnswer(props.submittedValue);
+  });
 
-class OutGoing extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'score': 0
-        };
-
-        this.submittedAnswer = this.submittedAnswer.bind(this);
+  const submittedAnswer = (str) => {
+    const ans = str.toString();
+    switch (ans) {
+      case 'Ottawa':
+        props.updateScore(1);
+        break;
+      case 'Vancouver':
+      case 'Toronto':
+      case 'Montreal':
+        props.updateScore(-1);
+        break;
+      default:
+        break;
     }
+  }
 
-    
-
-    submittedAnswer = (str) => {
-        const ans = str.toString(); 
-        switch (ans) {
-            case 'Ottawa':
-                 this.props.updateScore(1);                
-                 break;
-            case 'Vancouver':
-                 this.props.updateScore(-1);
-                 break;
-            case 'Toronto':
-                 this.props.updateScore(-1);
-                 break;   
-            case 'Montreal':
-                 this.props.updateScore(-1);
-                 break;
-            default:
-                break
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                {this.submittedAnswer(this.props.submittedValue)}
-            </div>
-        );
-    }
+  return (
+    <div>
+      {submittedAnswer(props.submittedValue)}
+    </div>
+  );
 }
 
 const mapStateToProps = state => {
-    return state;
+  return state;
 }
 
 const mapActionsToProps = {
-    updateScore: updateScore
-    
+  updateScore: updateScore
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(OutGoing);

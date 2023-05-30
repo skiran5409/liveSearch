@@ -1,81 +1,62 @@
-import  React, { Component } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { submitValue, quizData } from '../Redux/action';
 import questions from './questions.json';
 
-class Incoming extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'inputValue': this.props.defaultInput,
-        };
-        // this.props.quizData(questions)
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleReset = this.handleReset.bind(this);
-    }
+const Incoming = ({ defaultInput, submitValue, quizData }) => {
+  const [inputValue, setInputValue] = useState(defaultInput);
 
-    
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setInputValue(event.target.value);
+  };
 
-    handleChange(event) {
-        console.log(event.target.value);
-        this.setState({'inputValue': event.target.value});
-    }
+  const handleSubmit = (event) => {
+    submitValue(inputValue);
+    event.preventDefault();
+  };
 
-    handleSubmit(event) {
-        this.props.submitValue(this.state.inputValue);
-        event.preventDefault();
-    }
+  const handleReset = (event) => {
+    setInputValue('');
+    event.preventDefault();
+  };
 
-    handleReset(event) {
-        this.setState({'inputValue': ''});
-        event.preventDefault();
-    }
+//   useEffect(() => {
+//     quizData(questions); // Initialize quiz data
+//   }, [quizData]);
 
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
-                    <div onChange={this.handleChange} >
-                        {
-                            questions.map((question, index) => {
-                                return (
-                                    <div key={index}>
-                                        <p>{question.question}</p>
-                                        <ul className='list' >
-                                            {
-                                                question.options.map((answer, index) => {
-                                                    return (
-                                                        <li key={index}><input type='radio' name='answer' value={answer} /> {answer}</li>
-                                                    )
-                                                })
-                                            }
-                                        </ul>
-                                    </div>
-                                )
-                            }
-                            ) 
-                        } 
-                    
-                        <input type='submit' value='Submit' className='submitBtn' />
-                    </div>
-                    </form>
+  return (
+    <div>
+      <form onSubmit={handleSubmit} onReset={handleReset}>
+        <div onChange={handleChange}>
+          {questions.map((question, index) => (
+            <div key={index}>
+              <p>{question.question}</p>
+              <ul className='list'>
+                {question.options.map((answer, index) => (
+                  <li key={index}>
+                    <input type='radio' name='answer' value={answer} /> {answer}
+                  </li>
+                ))}
+              </ul>
             </div>
-        )
-    }
-
-}
+          ))}
+          <input type='submit' value='Submit' className='submitBtn' />
+        </div>
+      </form>
+    </div>
+  );
+};
 
 const mapStateToProps = (state, props) => {
-    return {
-        defaultInput: props.defaultInput + ' ' + state.submittedValue
-    };
-}
+  return {
+    defaultInput: props.defaultInput + ' ' + state.submittedValue,
+  };
+};
 
 const mapActionsToProps = {
-    submitValue : submitValue,
-    quizData: quizData
+  submitValue: submitValue,
+  quizData: quizData,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Incoming);
