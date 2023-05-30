@@ -34,3 +34,14 @@
 .wrongAns{
     color: red;
 }
+
+.list{
+    list-style-type: none;
+    padding: 0;
+}
+
+.marks{
+    font-weight: 700;
+    clear: both;
+    float: right;
+}

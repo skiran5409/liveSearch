@@ -1,7 +1,9 @@
 import React, { Component} from "react";
-import Incoming from "./Incoming";
-import Outgoing from "./Outgoing";
-
+import Question from "./Question";
+import Answer from "./Answer";
+import Score from "./Score";
+import Result from "./Result";
+import { connect } from "react-redux";
 const canUseDOM = !!(
     (typeof window !== 'undefined' &&
     window.document && window.document.createElement)
@@ -12,15 +14,30 @@ if (canUseDOM) {
 }
 
 class App extends Component {
+  constructor(props) {  
+    super(props);
+    this.state = {
+      score: 0
+    };
+  }
+
   render()
  {
   return(
     <div className="test" id="">
-      <p>What is the capital of Ontario?</p>
-    <Incoming defaultInput = {''} />
-    <Outgoing />
+    
+    {<div><Score />
+    <Question defaultInput = {''}  />
+    <Answer /></div>}
+    {this.props.score === 1 ? <Result /> : null}
+    {this.props.score === -1 ? <Result /> : null}
     </div>
   )
  }}
 
-export default App;
+ const mapStateToProps = state => {
+  return state;
+}
+
+
+export default connect(mapStateToProps)(App);

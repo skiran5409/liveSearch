@@ -4,4 +4,5 @@ body {
     padding-left: 50px;
     background-color: aliceblue;
   font-family: sans-serif;
+  background-image: linear-gradient(to right, #c9d6ff, #e2e2e2, #c9d6ff);
 }
