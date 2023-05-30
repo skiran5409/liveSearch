@@ -1,22 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-class Result extends Component {
-    render() {
-        return (
-            <div>
-                <h1>Result</h1>
-                {this.props.score >= 1 ? <div><p>Score: {this.props.score}</p>
-                <p>Congrats you have passed this Quiz</p></div> : <div><p>Score: {this.props.score}</p>
-                <p>Sorry !! Better Luck next time</p></div>}
-                <input type="button" className="resetBtn" value="Restart Quiz" onClick={() => window.location.reload()} />
-            </div>
-        );
-    }
+const Result = () => {
+    const answers = useSelector(state => state.answers);
+
+    const correctAnswers = answers.filter(answer => answer.isCorrect);
+
+    return (
+        <div className="result">
+            <h2>Result</h2>
+            <p>You answered {correctAnswers.length} out of 10 questions Correctly!!!</p>
+        </div>
+    );
+
 }
 
-const mapStateToProps = state => {
-    return state;
-}
-
-export default connect(mapStateToProps)(Result);
+export default Result;

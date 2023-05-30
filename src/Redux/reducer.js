@@ -1,17 +1,32 @@
-import { SUBMIT_VALUE, UPDATE_SCORE, QUIZ_DATA } from "./action";
+import questions from '../data/questions';
 
+const initialState = {
+  questions: [...questions],
+  answers: [],
+};
 
-const submittedValueReducer = (state = '', action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SUBMIT_VALUE:
-      return action.payload.submittedValue;
-    case UPDATE_SCORE:
-      return action.payload.score;
-      case QUIZ_DATA:
-        return action.payload.qdata;
+    case 'ANSWER_QUESTION':
+      const { questionNumber, selectedOptions } = action.payload;
+      const currentQuestion = state.questions[questionNumber - 1];
+      const isCorrect = currentQuestion.correctAnswer === selectedOptions;
+
+      return {
+        ...state,
+        answers: [
+          ...state.answers,
+          {
+            questionNumber,
+            selectedOptions,
+            isCorrect,
+          },
+        ],
+      };
+
     default:
       return state;
   }
 };
 
-export default submittedValueReducer;
+export default reducer;

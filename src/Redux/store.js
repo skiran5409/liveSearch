@@ -1,21 +1,6 @@
-import { createStore, combineReducers } from "redux";
-import submittedValueReducer from "./reducer";
-const allReducers = combineReducers({
-  submittedValue: submittedValueReducer,
-  score: submittedValueReducer,
-  qdata: submittedValueReducer
-});
+import { createStore } from 'redux';
+import reducer from './reducer';
 
-const initialState = {
-  submittedValue: '',
-  score: 0,
-qdata: []
-};
+const store = createStore(reducer);
 
-const store = createStore(
-  allReducers,
-  initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
-export { store };
+export {store};
