@@ -1,52 +1,52 @@
 [
     {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "What is the capital of Canada?",
+    "answers": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+    "correctAnswer": "Ottawa"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "What is the biggest city in Canada?",
+    "answers": ["Montreal", "Toronto", "Edmonton", "Halifax"],
+    "correctAnswer": "Toronto"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "What is the biggest province in Canada?",
+    "answers": ["Alberta", "British Columbia", "Quebec", "Ontario"],
+    "correctAnswer": "Ontario"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "How many territories are in Canada?",
+    "answers": ["3", "10", "8", "25"],
+    "correctAnswer": "3"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "When is Canada Day celebrated?",
+    "answers": ["15 August", "05 July", "01 July", "31 December"],
+    "correctAnswer": "01 July"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "What is the National sport of Canada?",
+    "answers": ["Basketball", "Ice Hockey", "Cricket", "Soccer"],
+    "correctAnswer": "Ice Hockey"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "What are the official languages of Canada?",
+    "answers": ["English, Spanish", "English", "Spanish, French", "English, French"],
+    "correctAnswer": "English, French"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "Which Canadian dish is made of fries, cheese and gravy?",
+    "answers": ["Pasta", "Biryani", "Poutine", "Pizza"],
+    "correctAnswer": "Poutine"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "In which city can you find Pierre Elliott Trudeau International Airport?",
+    "answers": ["New York", "London", "Paris", "Montreal"],
+    "correctAnswer": "Montreal"
   },
   {
-    "question": "What is the capital of France?",
-    "answers": ["New York", "London", "Paris", "Dublin"],
-    "correctAnswer": "Paris"
+    "question": "Canada is home to the world’s polar bear capital. Which one is it?",
+    "answers": ["Manitoba", "Halifax", "Calgary", "Yukon"],
+    "correctAnswer": "Manitoba"
   }
 ]
